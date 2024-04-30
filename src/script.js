@@ -46,6 +46,8 @@ function startGame() {
     cells.forEach(cell => cell.addEventListener("click", handleMove));
 }
 
+const NO_CELLS = 9;
+
 function handleMove(event) {
     if (gameOver) {
         return;
@@ -57,7 +59,7 @@ function handleMove(event) {
         ++moves;
         if (checkWinner()) {
             showResult(`${currentPlayer === "X" ? firstPlayer : secondPlayer} Wins!`);
-        } else if (moves === 9) {
+        } else if (moves === NO_CELLS) {
             showResult("It's a Tie!");
         } else {
             currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -68,12 +70,12 @@ function handleMove(event) {
 
 function checkWinner() {
     let cells = document.querySelectorAll(".button");
-    let lines = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8],
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],
-        [0, 4, 8], [2, 4, 6]
+    let winLines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal lines
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical lines
+        [0, 4, 8], [2, 4, 6] // diagonal lines
     ];
-    for (let line of lines) {
+    for (let line of winLines) {
         let [a, b, c] = line;
         if (cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent) {
             return true;
