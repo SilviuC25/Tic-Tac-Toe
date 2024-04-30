@@ -13,6 +13,8 @@ function startGame() {
     let boardContainer = document.querySelector(".board-container");
     let newGameButton = document.getElementById("new-game-button");
     let gameResult = document.getElementById("game-result");
+    let startButton = document.getElementById("btn-start");
+    startButton.classList.add("d-none");
 
     if (!firstPlayer || !secondPlayer) {
         alertMessageFirst.classList.remove("d-none");
