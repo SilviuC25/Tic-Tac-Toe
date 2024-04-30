@@ -4,6 +4,7 @@ let gameOver;
 let firstPlayer;
 let secondPlayer;
 let playerTurn = document.getElementById("player-turn");
+let gameResult = document.getElementById("game-result");
 
 function startGame() {
     firstPlayer = document.getElementById("first-player").value;
@@ -12,7 +13,6 @@ function startGame() {
     let alertMessageSecond = document.getElementById("alert-message-second");
     let boardContainer = document.querySelector(".board-container");
     let newGameButton = document.getElementById("new-game-button");
-    let gameResult = document.getElementById("game-result");
     let startButton = document.getElementById("btn-start");
     startButton.classList.add("d-none");
 
@@ -25,7 +25,6 @@ function startGame() {
     } else {
         alertMessageFirst.classList.add("d-none");
         alertMessageSecond.classList.add("d-none");
-
     }
 
     currentPlayer = "X";
@@ -58,12 +57,23 @@ function handleMove(event) {
         cell.textContent = currentPlayer;
         ++moves;
         if (checkWinner()) {
-            showResult(`${currentPlayer === "X" ? firstPlayer : secondPlayer} Wins!`);
+            let message;
+            if (currentPlayer === "X") {
+                message = `${firstPlayer} Wins!`;
+            } else {
+                message = `${secondPlayer} Wins!`;
+            }
+            showResult(message);
         } else if (moves === TOTAL_CELLS) {
             showResult("It's a Tie!");
         } else {
-            currentPlayer = currentPlayer === "X" ? "O" : "X";
-            playerTurn.textContent = `${currentPlayer === "X" ? firstPlayer : secondPlayer}'s Turn`;
+            if (currentPlayer === "X") {
+                currentPlayer = "O";
+                playerTurn.textContent = `${secondPlayer}'s Turn`;
+            } else {
+                currentPlayer = "X";
+                playerTurn.textContent =`${firstPlayer}'s Turn`;
+            }
         }
     }
 }
@@ -85,7 +95,6 @@ function checkWinner() {
 }
 
 function showResult(message) {
-    let gameResult = document.getElementById("game-result");
     gameResult.textContent = message;
     gameResult.classList.remove("d-none");
     let newGameButton = document.getElementById("new-game-button");
