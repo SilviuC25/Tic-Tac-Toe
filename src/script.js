@@ -52,7 +52,7 @@ function handleMove(event) {
     let cell = event.target;
     if (!cell.textContent) {
         cell.textContent = currentPlayer;
-        moves++;
+        ++moves;
         if (checkWinner()) {
             showResult(`${currentPlayer === "X" ? firstPlayer : secondPlayer} Wins!`);
         } else if (moves === 9) {
