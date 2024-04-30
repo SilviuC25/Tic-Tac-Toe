@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+
+<div class="my-5">
+    <h1 class="text-center text-primary">Tic Tac Toe Game</h1>
+</div>
+<div class="container mt-5">
+    <div class="game-container">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="first-player" placeholder="Player 1">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="second-player" placeholder="Player 2">
+        </div>
+        <button type="button" class="btn btn-primary mb-3" onclick="startGame()">Start Game</button>
+        <div id="alert-message-first" class="alert alert-danger d-none" role="alert">
+            Both player names are required!
+        </div>
+        <div id="alert-message-second" class="alert alert-danger d-none" role="alert">
+            Player names must be different!
+        </div>
+        <div class="board-container d-none">
+            <div class="row">
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="0" data-col="0"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="0" data-col="1"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="0" data-col="2"></div>
+            </div>
+            <div class="row">
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="1" data-col="0"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="1" data-col="1"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="1" data-col="2"></div>
+            </div>
+            <div class="row">
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="2" data-col="0"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="2" data-col="1"></div>
+                <div class="col border border-3 border-primary text-center p-4 button" data-row="2" data-col="2"></div>
+            </div>
+        </div>
+        <div><h3 id="game-result" class="my-3 d-none text-center text-primary"></h3></div>
+        <div><h3 id="player-turn" class="my-3 d-none text-primary"></h3></div>
+        <button type="button" class="btn btn-primary mt-3 d-none" id="new-game-button" onclick="startGame()">New Game</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
