@@ -46,7 +46,7 @@ function startGame() {
     cells.forEach(cell => cell.addEventListener("click", handleMove));
 }
 
-const NO_CELLS = 9;
+const TOTAL_CELLS = 9;
 
 function handleMove(event) {
     if (gameOver) {
@@ -59,7 +59,7 @@ function handleMove(event) {
         ++moves;
         if (checkWinner()) {
             showResult(`${currentPlayer === "X" ? firstPlayer : secondPlayer} Wins!`);
-        } else if (moves === NO_CELLS) {
+        } else if (moves === TOTAL_CELLS) {
             showResult("It's a Tie!");
         } else {
             currentPlayer = currentPlayer === "X" ? "O" : "X";
